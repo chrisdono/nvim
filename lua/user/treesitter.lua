@@ -1,3 +1,5 @@
+require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
+
 local configs = require("nvim-treesitter.configs")
 configs.setup {
   -- ensure_installed = "maintained",
@@ -12,3 +14,5 @@ configs.setup {
   },
   indent = { enable = true, disable = { "yaml" } },
 }
+
+require 'treesitter-context'.setup{}

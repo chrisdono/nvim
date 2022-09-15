@@ -64,6 +64,7 @@ return packer.startup(function(use)
   use "lunarvim/darkplus.nvim"
   use "folke/tokyonight.nvim"
   use "navarasu/onedark.nvim"
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -76,12 +77,19 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   -- use "nvim-treesitter/nvim-treesitter"
+  use 'nvim-treesitter/nvim-treesitter-context'
   use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
 
   -- Git
   use "tpope/vim-fugitive"
-  use "lewis6991/gitsigns.nvim"
+  -- use "lewis6991/gitsigns.nvim"
+  use {
+    "lewis6991/gitsigns.nvim", 
+    config = function()
+        require('gitsigns').setup()
+    end
+    }
   -- use "mhinz/vim-signify"
 
   use {

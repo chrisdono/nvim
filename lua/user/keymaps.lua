@@ -27,8 +27,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
--- Easy Caps
-keymap("n", "<c-u>", "viwU<Esc>", opts)
+-- Easy Caps -- removing since it conflicts with page up movement
+-- keymap("n", "<c-u>", "viwU<Esc>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -48,7 +48,7 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("i", "jj", "<ESC>", opts)
 
 -- Easy Caps
-keymap("i", "<c-u>", "<Esc>viwU", opts)
+-- keymap("i", "<c-u>", "<Esc>viwU", opts)
 
 -- *****************************
 -- Visual --
@@ -79,8 +79,14 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.git_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.git_files()<cr>", opts)
+keymap("n", "<C-f>", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader>gg", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>gf", "<cmd>Telescope grep_string<cr>", opts)
+-- keymap("n", "<leader>g/", "<cmd>Telescope grep_last_search<cr>", opts)
+
+-- keymap("<leader>ps", function() require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")}), opts)
 
 
 

@@ -17,7 +17,7 @@ vim.g.tokyonight_transparant = true
 require('onedark').setup  {
     -- Main options --
     style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-    transparent = false,  -- Show/hide background
+    transparent = true,  -- Show/hide background
     term_colors = true, -- Change terminal color as per the selected theme style
     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
     cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
@@ -50,5 +50,12 @@ require('onedark').setup  {
     },
 }
 
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+
+require("catppuccin").setup({
+    transparent_background = true,
+})
+
 -- Load the colorscheme
 vim.cmd[[colorscheme onedark]]
+-- vim.cmd [[colorscheme catppuccin]]
