@@ -86,6 +86,7 @@ keymap("n", "<leader>gg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>gf", "<cmd>Telescope grep_string<cr>", opts)
 -- keymap("n", "<leader>g/", "<cmd>Telescope grep_last_search<cr>", opts)
 
+keymap("n", "<leader>F", ":py3f C:\\Program Files\\LLVM\\share\\clang\\clang-format.py", opts)
 -- keymap("<leader>ps", function() require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")}), opts)
 
 

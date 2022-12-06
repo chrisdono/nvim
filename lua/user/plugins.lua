@@ -16,12 +16,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+ vim.cmd [[
+   augroup packer_user_config
+     autocmd!
+     autocmd BufWritePost plugins.lua source <afile> | PackerSync
+   augroup end
+ ]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -45,20 +45,57 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
-  -- Completions
-  use("hrsh7th/nvim-cmp")        -- the completion plugin
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-buffer")      -- buffer completions
-  use("hrsh7th/cmp-path")        -- buffer completions
-  use("hrsh7th/cmp-cmdline")     -- buffer completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  -- LSP and autocompletion
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
 
-  -- Snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'saadparwaiz1/cmp_luasnip'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-nvim-lua'},
 
-  -- LSP
-  use("neovim/nvim-lspconfig")
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+      -- Snippets
+      {'L3MON4D3/LuaSnip'},
+      {'rafamadriz/friendly-snippets'},
+    }
+  }
+
+  require("mason").setup {
+    log_level = vim.log.levels.DEBUG
+    }
+
+  -- OLD LSP AND COMPLETIONS
+  -- -- LSP
+  -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  -- use("neovim/nvim-lspconfig")
+
+  -- -- Completions
+  -- use("hrsh7th/nvim-cmp")        -- the completion plugin
+  -- use("hrsh7th/cmp-nvim-lsp")
+  -- use("hrsh7th/cmp-buffer")      -- buffer completions
+  -- use("hrsh7th/cmp-path")        -- buffer completions
+  -- use("hrsh7th/cmp-cmdline")     -- buffer completions
+  -- use "saadparwaiz1/cmp_luasnip" -- snippet completions
+
+  -- -- Snippets
+  -- use "L3MON4D3/LuaSnip" --snippet engine
+
+--   use {
+--       "windwp/nvim-autopairs",
+--       config = function() require("nvim-autopairs").setup {} end
+--   }
+
+
+  -- Copilot completions
+  use("github/copilot.vim")
 
   -- Colorschemes 
   use "lunarvim/darkplus.nvim"

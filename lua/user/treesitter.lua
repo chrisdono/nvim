@@ -3,12 +3,12 @@ require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
 local configs = require("nvim-treesitter.configs")
 configs.setup {
   -- ensure_installed = "maintained",
-  ensure_installed = { "c", "lua", "python" },
+  ensure_installed = { "c", "python" },
   sync_install = false, 
   ignore_install = { "" }, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = { "" }, -- list of language that will be disabled
+    disable = { "lua" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
 
   },
