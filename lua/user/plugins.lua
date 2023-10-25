@@ -95,7 +95,7 @@ return packer.startup(function(use)
 
 
   -- Copilot completions
-  use("github/copilot.vim")
+  -- use("github/copilot.vim")
 
   -- Colorschemes 
   use "lunarvim/darkplus.nvim"

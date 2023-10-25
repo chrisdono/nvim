@@ -24,8 +24,9 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-
+-- keymap("i", "<Tab>", [[pumvisible() ? (complete_info().selected == -1 ? "<C-e><Tab>" : "<C-y>") : "<TAB>"]], opts)
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("i", "<C-Y>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- Easy Caps -- removing since it conflicts with page up movement
 -- keymap("n", "<c-u>", "viwU<Esc>", opts)
